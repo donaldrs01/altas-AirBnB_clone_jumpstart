@@ -24,6 +24,8 @@ def text_display(text):
     return f'C {text}'
 
 
+#  Provide route for when text is not included after 'Python'
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_display(text="is cool"):
     text = text.replace('_', ' ')
