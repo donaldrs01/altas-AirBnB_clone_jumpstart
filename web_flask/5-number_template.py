@@ -45,7 +45,7 @@ def number_display(n):
 def show_number_template(n):
     if isinstance(n, int):
         #  Use render_template function import to display page
-        return render_template('5-number.html', n)
+        return render_template('5-number.html', n=n)
 
 
 if __name__ == "__main__":
