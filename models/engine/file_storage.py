@@ -57,6 +57,11 @@ class FileStorage:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
         except:
             pass
+    
+    def close(self):
+        """Deserialzies (reloads) the JSON file to objects"""
+        self.reload()
+
 
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
@@ -64,4 +69,5 @@ class FileStorage:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects:
                 del self.__objects[key]
+    
 

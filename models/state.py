@@ -7,6 +7,7 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from is import genenv
 
 
 class State(BaseModel, Base):
@@ -18,3 +19,9 @@ class State(BaseModel, Base):
     else:
         name = ""
         cites = []
+    
+    if getenv("HBNB_TYPE_STORAGE") != 'db':
+        @property
+        def cities(self):
+            """Returns list of City objects from FileStorage linked to state"""
+            city_objects = [city for city in storage.all(City).values()

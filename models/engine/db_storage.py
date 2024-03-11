@@ -63,6 +63,11 @@ class DBStorage:
         """delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
+    
+    def close(self):
+        """close/remove session from the current scope"""
+        self.__session.remove()
+
 
     def reload(self):
         """reloads data from the database"""
