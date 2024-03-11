@@ -7,7 +7,6 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
-from os import genenv
 
 
 class State(BaseModel, Base):
