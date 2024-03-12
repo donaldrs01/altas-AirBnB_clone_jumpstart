@@ -13,7 +13,7 @@ app = Flask(__name__)
 def states_list():
     from models import storage
     from models.state import State
-    states = storage.all('State')
+    states = storage.all('State').values()
     return render_template('7-states_list.html', states=states)
 
 
