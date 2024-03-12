@@ -4,21 +4,23 @@ Script that starts a Flask web application.
 Renders an HMTL webpage that lists all state names
 as well as associated City objects.
 """
-from models import storage
 from flask import Flask, render_template
-from models.state import State
 
 app = Flask(__name__)
 
 
 @app.route('/cities_by_state', strict_slashes=False)
 def cities_by_state():
+    from models import storage
+    from models.state import State
     states = storage.all('State')
     return render_template('8-cities_by_states.html', states=states)
 
 
 @app.teardown_appcontext
-def close(self):
+def teardown(exception):
+    """ Method to close current SQLAlchemy session"""
+    from models import storage
     storage.close()
 
 
