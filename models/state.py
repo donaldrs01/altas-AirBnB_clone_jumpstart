@@ -2,7 +2,6 @@
 """ holds class State"""
 import models
 from models.base_model import BaseModel, Base
-from models.city import City
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
@@ -23,6 +22,8 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Returns list of City objects from FileStorage linked to state"""
+            from models import storage
+            from models.city import City
             city_objects = []
             for city in models.storage.all('City').values():
                 if city.state_id == self.id:
