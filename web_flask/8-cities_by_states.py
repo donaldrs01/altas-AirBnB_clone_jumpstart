@@ -9,8 +9,8 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/cities_by_state', strict_slashes=False)
-def cities_by_state():
+@app.route('/cities_by_states', strict_slashes=False)
+def cities_by_states():
     from models import storage
     from models.state import State
     states = storage.all('State')
