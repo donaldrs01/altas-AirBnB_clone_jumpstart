@@ -14,7 +14,6 @@ def cities_by_states():
     from models import storage
     from models.state import State
     states = storage.all('State').values()
-    print(states) # Debugging statement
     return render_template('8-cities_by_states.html', states=states)
 
 
