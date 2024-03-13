@@ -15,7 +15,7 @@ def states():
     from models import storage
     from models.state import State
     states = storage.all('State').values()
-    return render_template('7-states_list.html', states=states)
+    return render_template('9-states.html', states=states)
 
 
 @app.route('/states/<id>', strict_slashes=False)
@@ -28,9 +28,9 @@ def states_by_id(id):
     state = next((state for state in states if state.id == id), None)
 
     if state:
-        return render_template('9-states.html', state=state, not_found=False)
+        return render_template('9-states_id.html', state=state, not_found=False)
     else:
-        return render_template('9-states.html', not_found=True)
+        return render_template('9-states_id.html', not_found=True)
 
 
 @app.teardown_appcontext
