@@ -1,1 +1,1 @@
-Do I need another README in this directory? We shall see!
+Mandatory README. Read me... if you dare.. 
