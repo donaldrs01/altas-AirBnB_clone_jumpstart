@@ -17,7 +17,17 @@ def teardown(exception):
 
 @app.route('/hbnb_filters', strict_slashes=False)
 def hbnb_filters():
+    from models import storage
     from models.state import State
     from models.city import City
     from models.amenity import Amenity
-    
+
+    states = storage.all('State').values()
+    cities = storage.all('City').values()
+    amenities = storage.all('Amenity').values()
+    return render_template('10-hbnb_filters.html', state=states, amenities=amenities)
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+
