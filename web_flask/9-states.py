@@ -19,12 +19,15 @@ def states():
 
 
 @app.route('/states/<id>', strict_slashes=False)
-def states_by_id():
+def states_by_id(id):
     from models import storage
     from models.state import State
-    state = storage.get(State, id)
+
+    states = storage.all(State).values()
+    state = next((state for state in states if state.id == id), None)
+
     if state:
-        return render_template('9-states.html', state=state)
+        return render_template('9-states.html', state=state, not_found=False)
     else:
         return render_template('9-states.html', not_found=True)
             
