@@ -24,13 +24,14 @@ def states_by_id(id):
     from models.state import State
 
     states = storage.all(State).values()
+    #  generator expression to find valid cases of state.id == id
     state = next((state for state in states if state.id == id), None)
 
     if state:
         return render_template('9-states.html', state=state, not_found=False)
     else:
         return render_template('9-states.html', not_found=True)
-            
+
 
 @app.teardown_appcontext
 def teardown(exception):
