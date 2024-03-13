@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" href="../web_static/images/browsericon.png" type="image/x-icon">
-        <link rel="stylesheet" href="styles/4-common.css">
-        <link rel="stylesheet" href="styles/3-header.css">
-        <link rel="stylesheet" href="styles/3-footer.css">
-        <link rel="stylesheet" href="styles/6-filters.css">
+        <link rel="icon" href="../static/images/browsericon.png" type="image/x-icon">
+        <link rel="stylesheet" href="../static/styles/3-footer.css">
+        <link rel="stylesheet" href="../static/styles/3-header.css">
+        <link rel="stylesheet" href="../static/styles/4-common.css">
+        <link rel="stylesheet" href="../static/styles/6-filters.css">
     </head>
     <body>
         <header>
@@ -15,31 +15,27 @@
             <section class="filters">
                 <div class="locations">
                     <h3> States </h3>
-                        <h4> @nbsp; </h4>
+                        <h4>@nbsp;</h4>
                     <ul class="popover">
+                        {% for state in states %}
                         <li>
-                            <h2>Washington:</h2>
+                            <h2>{{ state.name }}</h2>
                             <ul class="cities">
-                                <li>Seattle</li>
-                                <li>Olympia</li>
+                                {% for city in state.cities %}
+                                <li>{{ city.name }}</li>
+                                {% endfor %}
                             </ul>
                         </li>
-                        <li>
-                            <h2> Oregon: </h2>
-                            <ul class="cities">
-                                <li>Portland</li>
-                                <li>Eugene</li>
-                            </ul>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="amenities">
                     <h3>Amenities</h3>
-                        <h4> @nbsp; </h4>
+                        <h4>@nbsp;</h4>
                         <ul class="popover">
-                            <li>Pet Friendly</li>
-                            <li>Grill</li>
-                            <li>Internet Access</li>
+                            {% for amenity in amenities %}
+                            <li>{{ amenity.name }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 <button class="button">Search</button>
